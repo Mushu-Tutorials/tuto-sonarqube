@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: sonarqube
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9002:9002"
