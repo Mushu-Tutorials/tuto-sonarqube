@@ -9,6 +9,7 @@ Code coverage with SonarQube ([documentation](https://docs.sonarqube.org/latest/
 The target project where you want to run SonarQube must have **xDebug**. For Docker projects to enable xDebug, run the command:
 
 ```dockerfile
+# Dockerfile
 RUN apk --update --no-cache add git bash --no-cache $PHPIZE_DEPS \
     && pecl install xdebug-3.0.3\
     && docker-php-ext-enable xdebug
@@ -77,10 +78,34 @@ env | grep PATH
 sonar-scanner -v
 ```
 
-## Create new projets
+## Create new projects
 
-- Manually
-- Name the project
+### Requires
+
+Create a `sonar-project.properties` file at the root of the project and replace the names according to your project name.
+
+```properties
+# must be unique in a given SonarQube instance
+sonar.projectKey=my:project
+
+# --- optional properties ---
+
+# defaults to project key
+#sonar.projectName=My project
+# defaults to 'not provided'
+#sonar.projectVersion=1.0
+ 
+# Path is relative to the sonar-project.properties file. Defaults to .
+#sonar.sources=.
+ 
+# Encoding of the source code. Default is default system encoding
+#sonar.sourceEncoding=UTF-8
+```
+
+### Installation
+
+- Add project > Manually
+- Name the project > Set Up
 - Generate the token
 - Other > Linux
 

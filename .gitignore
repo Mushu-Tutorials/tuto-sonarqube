@@ -1,0 +1,2 @@
+# Ignore SONAR environment files
+/.env
